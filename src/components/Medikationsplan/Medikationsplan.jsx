@@ -24,7 +24,7 @@ const Medikationsplan = (props) => {
           <tbody>
             {med.data.map((data, i) => {
               return (
-                <tr>
+                <tr key={i}>
                   <th>{data.Wirkstoff}</th>
                   <td>{data.Medikamente}</td>
                   <th>{data.Starke}</th>

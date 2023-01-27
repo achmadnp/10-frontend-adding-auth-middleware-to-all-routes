@@ -5,6 +5,7 @@ import "./Beratung.css";
 import Input from "../../components/Form/Input/Input";
 import { fetcher, postReq } from "../../lib/fetcher";
 import { useState } from "react";
+import { DateConverter } from "../../util/dates";
 
 const Beratung = (props) => {
   const [anliegen, setAnliegen] = useState("");
@@ -52,7 +53,7 @@ const Beratung = (props) => {
               <tbody>
                 <tr>
                   <th>Datum / Uhrzeit</th>
-                  <td>{termine.data.datum}</td>
+                  <td>{DateConverter(new Date(termine.data.datum))}</td>
                 </tr>
               </tbody>
               <tbody>

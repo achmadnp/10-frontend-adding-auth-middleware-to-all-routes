@@ -5,6 +5,7 @@ import useSWR from "swr";
 import { fetcher, postReq } from "../../lib/fetcher";
 
 import "./beratungArzt.css";
+import { DateConverter } from "../../util/dates";
 
 const BeratungArzt = (props) => {
   const { data: termine, error: error } = useSWR(
@@ -61,7 +62,7 @@ const BeratungArzt = (props) => {
           <tbody>
             {termine.data.map((data, i) => (
               <tr key={i}>
-                <th>{data.datum}</th>
+                <th>{DateConverter(new Date(data.datum))}</th>
                 <td>
                   {patients &&
                     patients.data.filter(
@@ -89,7 +90,7 @@ const BeratungArzt = (props) => {
           toApproveTermine.data.map((termine, i) => (
             <tbody key={i}>
               <tr>
-                <th>{termine.datum}</th>
+                <th>{DateConverter(new Date(termine.datum))}</th>
                 <td>
                   {patients &&
                     patients.data.filter(

@@ -4,9 +4,15 @@ import "./DialyseDaten.css";
 
 import useSWR from "swr";
 import { fetcher } from "../../lib/fetcher";
+import { DateConverter } from "../../util/dates";
 const DialyseDaten = (props) => {
   const { data: ddaten, error: error } = useSWR(
     `http://localhost:8080/dialysedaten/dialysedaten/${props.userId}`,
+    fetcher
+  );
+
+  const { data: patients, error: perror } = useSWR(
+    `http://localhost:8080/patienten/patients/`,
     fetcher
   );
 
@@ -30,13 +36,19 @@ const DialyseDaten = (props) => {
           <tbody>
             <tr>
               <th>Patientenname</th>
-              <td>{ddaten.data.vollname}</td>
+              <td>
+                {patients &&
+                  ddaten &&
+                  patients.data.filter((data) => {
+                    return data._id === ddaten.data.vollname;
+                  })[0].name}
+              </td>
             </tr>
           </tbody>
           <tbody>
             <tr>
               <th>Geburtsdatum</th>
-              <td>{ddaten.data.geburtsdatum}</td>
+              <td>{DateConverter(new Date(ddaten.data.geburtsdatum))}</td>
             </tr>
           </tbody>
           <tbody>

@@ -1,0 +1,36 @@
+.card {
+  width: 30%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  border: 1px green solid;
+}
+
+.header {
+  height: 30%;
+  background: green;
+  color: white;
+  text-align: center;
+}
+
+.container {
+  padding: 2% 6%;
+}
+
+.table1 {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.form {
+  width: 30%;
+  margin: auto;
+  margin-top: 10%;
+  padding: 2%;
+  border: 1px solid;
+}
+
+.form-text {
+  font-size: 24px;
+}
